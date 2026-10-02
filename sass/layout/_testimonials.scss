@@ -1,0 +1,227 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.testimonials {
+    width: 100%;
+    background-color: $color-backround-gray; 
+    padding-top: 120px;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+
+    // ====================================
+    // CONTAINER
+    // ====================================
+
+    &__container {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;   
+        padding-left: 96px;
+        padding-right: 96px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+    }
+
+    // ====================================
+    // HEADER
+    // ====================================
+
+    &__header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    &__subtitle {
+        width: 100%;
+        font-family: $font-primary; 
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: 0.15em; 
+        text-transform: uppercase;
+        text-align: center;
+        color: $color-purple; 
+    }
+
+    &__title {
+        width: 100%;
+        margin: 0;
+        font-family: $font-secondary; 
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 110%;
+        text-align: center;
+        color: $color-hero-title; 
+    }
+
+    // ====================================
+    // GRID
+    // ====================================
+
+    &__grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 24px;
+    }
+
+    // ====================================
+    // CARD
+    // ====================================
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%; 
+        min-height: 320px;
+        padding: 40px;
+        box-sizing: border-box;
+        background-color: $color-white; 
+        border: none; // Pas de bordure sur l'image
+        border-radius: 24px;       
+        transition: transform $transition-normal, box-shadow $transition-normal;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 32px 0px rgba(18, 18, 20, 0.06);
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__icon {
+        width: 36px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__text {
+        margin: 0;
+        font-family: $font-secondary; 
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 160%;
+        color: $color-hero-description; 
+    }
+
+    // ====================================
+    // AUTHOR
+    // ====================================
+
+    &__author {
+        display: flex;
+        align-items: center; // Alignement centré avec l'avatar
+        gap: 16px;
+        padding-top: 24px;
+    }
+
+    &__avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    &__author-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    &__author-name {
+        margin: 0;
+        font-family: $font-tertiary;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 120%;
+        color: $color-hero-title; 
+    }
+
+    &__author-role {
+        margin: 0;
+        font-family: $font-quaternary;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 120%;
+        color: $color-text-muted;
+    }
+
+    // ====================================
+    // RESPONSIVE
+    // ====================================
+
+    @include laptop {
+        padding-top: 100px;
+        padding-bottom: 100px;
+
+        &__container {
+            padding-left: 48px;
+            padding-right: 48px;
+        }
+
+        &__card {
+            padding: 32px;
+        }
+    }
+
+    @include tablet {
+        padding: 80px 40px;
+
+        &__container {
+            padding: 0;
+            gap: 48px;
+        }
+
+        &__title {
+            font-size: 32px;
+        }
+
+        &__grid {
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        }
+
+        &__card:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+        }
+
+        &__card {
+            padding: 28px;
+        }
+    }
+
+    @include mobile {
+        padding: 60px 20px;
+
+        &__container {
+            gap: 40px;
+        }
+
+        &__title {
+            font-size: 28px;
+        }
+
+        &__card {
+            min-height: 0;
+            padding: 24px;
+            gap: 24px;
+        }
+    }
+}

@@ -1,0 +1,228 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.services {
+    width: 100%;
+    background-color: $color-background;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+
+    &__container {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding-left: 96px;
+        padding-right: 96px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+    }
+
+    // ====================================
+    // HEADER
+    // ====================================
+
+    &__header {
+        @include flex-center;
+        width: 100%;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__subtitle {
+        width: 100%;
+        font-family: $font-primary; 
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: 0.15em; 
+        text-transform: uppercase;
+        text-align: center;
+        color: $color-purple; 
+    }
+
+    &__title {
+        width: 100%;
+        margin: 0;
+        font-family: $font-secondary; 
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 100%;
+        text-align: center;
+        color: $color-hero-title; 
+    }
+
+    // ====================================
+    // GRID
+    // ====================================
+
+    &__grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 24px;
+    }
+
+    // ====================================
+    // CARD
+    // ====================================
+
+    &__card {
+        width: 100%;     
+        display: flex;
+        flex-direction: column;
+        gap: 32px;     
+        padding: 40px;
+        box-sizing: border-box;
+        background-color: $color-white; 
+        border: 1px solid #E9ECEF;
+        border-radius: 24px;   
+        box-shadow: 0px 8px 24px 0px rgba(18, 18, 20, 0.05); 
+        transition: transform $transition-normal, box-shadow $transition-normal;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 32px 0px rgba(18, 18, 20, 0.08);
+        }
+    }
+
+    &__card-icon {
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;     
+        border-radius: 16px;
+        background-color: rgba(110, 56, 247, 0.07); 
+          
+        // Icône à l'intérieur
+        svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+    }
+
+    &__card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__card-title {
+        margin: 0;
+        font-family: $font-secondary; 
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 100%;
+        color: $color-hero-title; 
+    }
+
+    &__card-description {
+        margin: 0;
+        font-family: $font-secondary; 
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 160%;
+        color: $color-hero-description; 
+    }
+
+    &__card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 16px;      
+        font-family: $font-secondary; 
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 100%;
+        text-decoration: none;
+        color: $color-purple;      
+        transition: opacity $transition-normal;
+
+        svg {
+            width: 14px;
+            height: 14px;
+            transition: transform $transition-fast;
+        }
+
+        &:hover {
+            opacity: 0.8;
+            svg {
+                transform: translateX(3px) translateY(-3px); 
+            }
+        }
+    }
+
+    // ====================================
+    // LAPTOP
+    // ====================================
+
+    @include laptop {
+        padding-top: 100px;
+        padding-bottom: 100px;
+
+        &__container {
+            padding-left: 48px;
+            padding-right: 48px;
+        }
+
+        &__card {
+            padding: 32px;
+        }
+    }
+
+
+    // ====================================
+    // TABLET
+    // ====================================
+
+    @include tablet {
+        padding: 80px 40px;
+
+        &__container {
+            padding: 0;
+            gap: 48px;
+        }
+
+        &__title {
+            font-size: 32px;
+            line-height: 120%;
+        }
+
+        // 2 colonnes si la place le permet, sinon 1 seule
+        &__grid {
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+        }
+    }
+
+
+    // ====================================
+    // MOBILE
+    // ====================================
+
+    @include mobile {
+        padding: 60px 20px;
+
+        &__container {
+            gap: 40px;
+        }
+
+        &__title {
+            font-size: 28px;
+        }
+
+        &__card {
+            padding: 24px;
+
+            gap: 24px;
+        }
+
+        &__card-title {
+            font-size: 22px;
+            line-height: 120%;
+        }
+    }
+}

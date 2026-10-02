@@ -1,0 +1,36 @@
+@use "../utils/variables" as *;
+
+
+body {
+    font-family: $font-primary;
+    font-size: $font-size-normal;
+    font-weight: $font-weight-regular;
+    line-height: 1.6;
+
+    color: $color-text;
+    background-color: $color-background;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.15;
+    font-weight: $font-weight-semibold;
+}
+
+
+p {
+    line-height: 1.7;
+}
+
+
+.text-muted {
+    color: $color-text-light;
+}

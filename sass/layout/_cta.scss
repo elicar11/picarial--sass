@@ -1,0 +1,135 @@
+@use "../utils/mixins" as *;
+@use "../utils/variables" as *;
+
+.cta {
+    width: 100%; 
+    background-color: #121214;
+    padding: 120px 96px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    
+}
+
+.cta__container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.cta__title {
+    width: 100%;
+    margin: 0;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1.15;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.cta__description {
+    width: 100%;
+    margin: 0;
+    font-family: $font-secondary;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    color: #868E96;
+}
+
+
+.cta__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    .btn {
+        height: 52px;
+        padding: 16px 28px;
+        border-radius: 30px; 
+        font-family: 'Manrope', sans-serif;
+        font-size: 15px;
+        line-height: 1; 
+        box-sizing: border-box;
+    }
+
+    .btn--primary {
+        width: 215px;
+        background-color: #F09008;
+        color: #FFFFFF;
+        border: none;
+        gap: 8px;
+        
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover {
+            background-color: darken(#F09008, 10%);
+        }
+    }
+
+    .btn--outline {
+        width: 198px;
+        background-color: transparent;
+        color: #FFFFFF;
+        border: 1px solid #FFFFFF;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+        }
+    }
+}
+
+
+@include laptop {
+    .cta {
+        padding: 100px 48px;
+    }
+}
+
+@include tablet {
+    .cta {
+        padding: 80px 40px;
+    }
+
+    .cta__container {
+        gap: 32px;
+    }
+
+    .cta__title {
+        font-size: 40px;
+    }
+}
+
+@include mobile {
+    .cta {
+        padding: 60px 20px;
+    }
+
+    .cta__title {
+        font-size: 30px;
+    }
+
+    .cta__description {
+        font-size: 16px;
+    }
+
+    .cta__buttons {
+        width: 100%;
+        flex-direction: column;
+
+        .btn {
+            width: 100%;
+            max-width: 360px;
+        }
+    }
+}

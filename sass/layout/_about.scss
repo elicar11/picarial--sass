@@ -1,0 +1,256 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+// ========================================
+// ABOUT SECTION
+// ========================================
+
+.about {
+    width: 100%;
+    background-color: #F1F3F5;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+
+    // ====================================
+    // CONTAINER
+    // ====================================
+
+    &__container {
+        @include flex-center;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding-left: 96px;
+        padding-right: 96px;
+        box-sizing: border-box;
+        gap: 64px;
+    }
+
+
+    // ====================================
+    // IMAGE WRAPPER
+    // ====================================
+
+    &__image-wrapper {
+        width: 560px;
+        height: 600px;
+        flex-shrink: 0;
+        border-radius: $radius-large; 
+        overflow: hidden;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+
+    // ====================================
+    // CONTENT WRAPPER
+    // ====================================
+
+    &__content {
+        width: 624px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        flex-shrink: 0;
+    }
+
+
+    // ====================================
+    // SUBTITLE (Avec la ligne)
+    // ====================================
+
+    &__subtitle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: $font-primary; 
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: 0.15em; 
+        text-transform: uppercase;      
+        color: $color-purple;
+
+        // Création de la petite ligne devant le texte
+        &::before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 0;
+            border-top: 2px solid $color-purple;
+        }
+    }
+
+
+    // ====================================
+    // TITLE
+    // ====================================
+
+    &__title {
+        margin: 0;
+        width: 100%;
+        font-family: $font-secondary; 
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 120%;
+        color: $color-hero-title; 
+    }
+
+
+    // ====================================
+    // DESCRIPTION
+    // ====================================
+
+    &__description {
+        margin: 0;
+        width: 100%;
+        font-family: $font-secondary; 
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 170%;
+        color: $color-hero-description; 
+    }
+
+
+    // ====================================
+    // STATS GRID
+    // ====================================
+
+    &__stats {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap; // Permet de passer à la ligne (2 par ligne)
+        gap: 32px;
+    }
+
+    &__stat {
+        width: 296px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__stat-number {
+        font-family: "Outfit", sans-serif;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 100%;
+        color: $color-hero-title; 
+    }
+
+    &__stat-label {
+        font-family: "Manrope", sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        color: $color-hero-description; 
+    }
+
+
+    // ====================================
+    // LAPTOP
+    // ====================================
+
+    @include laptop {
+        padding-top: 100px;
+        padding-bottom: 100px;
+
+        &__container {
+            padding-left: 48px;
+            padding-right: 48px;
+            gap: 48px;
+        }
+
+        &__image-wrapper {
+            flex: 0 1 45%;
+            width: auto;
+            min-width: 0;
+            height: auto;
+            aspect-ratio: 14 / 15;
+        }
+
+        &__content {
+            flex: 1 1 0;
+            width: auto;
+            min-width: 0;
+        }
+
+        &__title {
+            font-size: 36px;
+        }
+
+        &__stat {
+            width: calc(50% - 16px);
+        }
+    }
+
+
+    // ====================================
+    // TABLET
+    // ====================================
+
+    @include tablet {
+        padding: 80px 40px;
+
+        &__container {
+            padding: 0;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        &__image-wrapper {
+            flex: none;
+            width: 100%;
+            height: 420px;
+            aspect-ratio: auto;
+        }
+
+        &__content {
+            flex: none;
+            width: 100%;
+        }
+    }
+
+
+    // ====================================
+    // MOBILE
+    // ====================================
+
+    @include mobile {
+        padding: 60px 20px;
+
+        &__container {
+            gap: 40px;
+        }
+
+        &__image-wrapper {
+            height: 300px;
+        }
+
+        &__content {
+            gap: 24px;
+        }
+
+        &__title {
+            font-size: 30px;
+        }
+
+        &__stats {
+            gap: 24px;
+        }
+
+        &__stat {
+            width: calc(50% - 12px);
+        }
+
+        &__stat-number {
+            font-size: 36px;
+        }
+    }
+}

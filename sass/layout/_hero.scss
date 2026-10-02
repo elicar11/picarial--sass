@@ -1,0 +1,249 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.hero {
+    width: 100%;
+    height: $hero-height;
+    background-color: $color-background;
+    padding-top: $hero-padding-top;
+    padding-bottom: $hero-padding-bottom; 
+    box-sizing: border-box;
+
+    &__container {
+        @include container;   
+        @include flex-between;     
+        height: 100%;
+        gap: $hero-gap;
+    }
+
+    // ==============================
+    // LEFT CONTENT
+    // ==============================
+
+    &__content {
+        width: $hero-content-width;
+        height: $hero-content-height;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        flex-shrink: 0;
+    }
+
+    // ==============================
+    // BADGE
+    // ==============================
+
+    &__badge {
+        width: $hero-badge-width;
+        height: $hero-badge-height;
+        align-self: flex-start;
+        box-sizing: border-box;
+        padding-top: 6px;
+        padding-right: 14px;
+        padding-bottom: 6px;
+        padding-left: 14px;
+        border-radius: 20px;
+        background-color: rgba(110, 56, 247, 0.0627);
+        display: flex;
+        align-items: center;
+        font-family: $font-secondary;
+        font-size: 12px;
+        font-weight: $font-weight-semibold;
+        line-height: 100%;
+        color: $color-purple;
+        white-space: nowrap;
+    }
+
+    // ==============================
+    // TITLE
+    // ==============================
+
+    &__title {
+        width: $hero-content-width;
+        height: 210px;
+        margin: 0;
+        font-family: $font-secondary;
+        font-size: $hero-title-size;
+        font-weight: $font-weight-semibold;
+        line-height: $hero-title-line-height;
+        letter-spacing: normal;
+        color: $color-hero-title;
+    }
+
+    // ==============================
+    // DESCRIPTION
+    // ==============================
+
+    &__description {
+        width: $hero-content-width;
+        height: 58px;
+        margin: 0;
+        font-family: $font-secondary;
+        font-size: $hero-description-size;
+        font-weight: $font-weight-regular;
+        line-height: $hero-description-line-height;
+        letter-spacing: 0;
+        color: $color-hero-description;
+    }
+
+    // ==============================
+    // BUTTONS
+    // ==============================
+
+    &__buttons {
+        width: $hero-buttons-width;
+        height: $hero-buttons-height;
+        display: flex;
+        align-items: center;
+        gap: $hero-button-gap;
+    }
+
+    // ==============================
+    // IMAGE
+    // ==============================
+
+    &__image-wrapper {
+        width: $hero-image-width;
+        height: $hero-image-height;
+        flex-shrink: 0;
+        border-radius: $hero-image-radius;
+        overflow: hidden;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    // ==============================
+    // LAPTOP
+    // ==============================
+
+    @include laptop {
+        height: auto;
+        min-height: 700px;
+        padding: 100px 0;
+
+        &__container {
+            padding-left: 48px;
+            padding-right: 48px;
+            gap: 48px;
+        }
+
+        &__content {
+            flex: 1 1 0;
+            width: auto;
+            min-width: 0;
+            height: auto;
+        }
+
+        &__badge {
+            width: fit-content;
+        }
+
+        &__title {
+            width: 100%;
+            height: auto;
+            font-size: clamp(44px, 4.6vw, 56px);
+        }
+
+        &__description {
+            width: 100%;
+            height: auto;
+        }
+
+        &__buttons {
+            width: auto;
+            height: auto;
+            flex-wrap: wrap;
+        }
+
+        &__image-wrapper {
+            flex: 0 1 42%;
+            width: auto;
+            min-width: 0;
+            height: auto;
+            aspect-ratio: 1 / 1;
+        }
+    }
+
+
+    // ==============================
+    // TABLET
+    // ==============================
+
+    @include tablet {
+        min-height: auto;
+        padding: 80px 40px;
+
+        &__container {
+            padding: 0;
+            flex-direction: column;
+            align-items: center;
+            gap: 56px;
+        }
+
+        &__content {
+            flex: none;
+            width: 100%;
+            max-width: 624px;
+        }
+
+        &__title {
+            font-size: 48px;
+        }
+
+        &__image-wrapper {
+            flex: none;
+            width: min(560px, 100%);
+        }
+    }
+
+
+    // ==============================
+    // MOBILE
+    // ==============================
+
+    @include mobile {
+        padding: 60px 20px;
+
+        &__container {
+            gap: 40px;
+        }
+
+        &__content {
+            gap: 24px;
+        }
+
+        &__badge {
+            height: auto;
+            min-height: $hero-badge-height;
+            max-width: 100%;
+            align-self: flex-start;
+            white-space: normal;
+        }
+
+        &__title {
+            font-size: 36px;
+        }
+
+        &__description {
+            font-size: 16px;
+        }
+
+        &__buttons {
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+        }
+
+        &__image-wrapper {
+            width: 100%;
+            border-radius: 28px;
+        }
+    }
+}

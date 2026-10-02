@@ -1,0 +1,92 @@
+@use "variables" as *;
+
+// ========================================
+// MIXINS
+// ========================================
+
+
+// ----------------------------------------
+// CONTAINER
+// ----------------------------------------
+
+@mixin navbar {
+    width: 100%;
+    max-width: $container-width;
+
+    margin-inline: auto;
+
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+}
+
+@mixin container {
+    width: 100%;
+    max-width: $container-width;
+
+    margin-inline: auto;
+
+    padding-left: $container-padding2;
+    padding-right: $container-padding2;
+}
+
+
+// ----------------------------------------
+// FLEX CENTER
+// ----------------------------------------
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+// ----------------------------------------
+// FLEX BETWEEN
+// ----------------------------------------
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
+// <= 1200px
+@mixin laptop {
+    @media (max-width: $breakpoint-laptop) {
+        @content;
+    }
+}
+
+// <= 992px
+@mixin tablet {
+    @media (max-width: $breakpoint-tablet) {
+        @content;
+    }
+}
+
+// <= 576px
+@mixin mobile {
+    @media (max-width: $breakpoint-mobile) {
+        @content;
+    }
+}
+
+// >= 1201px 
+@mixin desktop {
+    @media (min-width: $breakpoint-desktop) {
+        @content;
+    }
+}
+
+
+// ----------------------------------------
+// TRANSITION
+// ----------------------------------------
+
+@mixin transition($property: all) {
+    transition: $property $transition-normal;
+}
